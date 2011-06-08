@@ -152,17 +152,14 @@ class RoadmapsLogic
 
   private
   def self.get_estimated_hours(version_id)
-    issues = Issue.find_by_sql(
-          ["select sum(estimated_hours) as sum from issues where fixed_version_id = :version_id",
-            {:version_id => version_id}])
+    issues = Issue.find_all_by_fixed_version_id(version_id)
 
-    unless issues.nil?
-      issues.each do |field|
-        return field.sum.to_f
-      end
+    sum = 0.0
+    issues.each do |i|
+      sum += i.estimated_hours if i.leaf? && i.estimated_hours
     end
     
-    return 0
+    return sum
   end
 
   private
