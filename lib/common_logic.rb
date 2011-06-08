@@ -31,23 +31,6 @@ class CommonLogic
   end
 
   def self.is_valid_version(version_id, effective_date)
-      finish_num = get_closed_num(version_id, 1)
-      unfinish_num = get_closed_num(version_id, 0)
-
-      RAILS_DEFAULT_LOGGER.debug "finish_num = #{finish_num}"
-      RAILS_DEFAULT_LOGGER.debug "unfinish_num = #{unfinish_num}"
-
-      # closed version
-      unless effective_date.nil?
-        if effective_date < Date::today && finish_num == 0 && unfinish_num == 0
-          return false
-        end
-
-        if effective_date < Date::today && finish_num >= 0 && unfinish_num == 0
-          return false
-        end
-      end
-
-      return true
+    !Version.find(version_id).closed?
   end
 end
