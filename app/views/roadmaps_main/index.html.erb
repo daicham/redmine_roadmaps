@@ -33,6 +33,11 @@
         <% else %>
           <%= l(:days_to_go, vo.late) %>
         <% end %>
+        <% if vo.estimated_hours < vo.plan_hours %>
+          <strong style="color:red;"><%= l(:excess, vo.plan_hours - vo.estimated_hours) %></strong>
+        <% else %>
+          <%= l(:remaining, vo.estimated_hours - vo.plan_hours)%>
+        <% end %>
       </div>
     </div>
     
@@ -57,8 +62,8 @@
         <th><%=l(:man_hours)%></th>
         <td>
           <%= l(:estimated_hours) %>:
-          <% if vo.estimated_hours == 0.0 %>
-            <strong style="color:red;"><%= vo.estimated_hours %></strong>
+          <% if vo.plan_hours < vo.estimated_hours %>
+          <strong style="color:red;"><%= vo.estimated_hours %></strong>
           <% else %>
             <%= vo.estimated_hours %>
           <% end %>
@@ -69,6 +74,9 @@
           <% else %>
             <%=vo.passed_hours%>
           <% end %>
+          <%= l(:hours) %><br />
+          <%= l(:plan_hours) %>:
+          <%= vo.plan_hours %>
           <%= l(:hours) %>
         </td>
       </tr>

@@ -22,6 +22,7 @@ class RoadmapsVO
     
     @estimated_hours = 0.00
     @passed_hours = 0.00
+    @plan_hours = 0.00
 
     @start_date = nil
     @due_date = nil
@@ -31,6 +32,6 @@ class RoadmapsVO
   end
 
   attr_accessor :version_id, :project_identifier, :project_name, :name, :description, :effective_date, :ticket_num, :finish_num, :unfinish_num,
-    :finish_percentage, :unfinish_percentage, :done_ratio, :estimated_hours, :passed_hours,
+    :finish_percentage, :unfinish_percentage, :done_ratio, :estimated_hours, :passed_hours, :plan_hours,
     :start_date, :due_date, :late, :assigned_users
 end

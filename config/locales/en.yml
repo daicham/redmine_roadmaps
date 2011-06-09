@@ -3,6 +3,8 @@ en:
     edit: "edit"
     late: "%d days late"
     days_to_go: "%d days to go"
+    excess: "excess for %{count} hours"
+    remaining: "remaining for %{count} hours"
     version_effective_date: "version's effective date"
     finished: "finished"
     unfinished: "unfinished"
@@ -14,6 +16,7 @@ en:
     descripton: "description"
     ticket_status: "ticket status"
     man_hours: "man hours"
+    plan_hours: "plan hours"
 
     no_start_date: "start date is not setting"
     no_due_date: "due date is not setting"
