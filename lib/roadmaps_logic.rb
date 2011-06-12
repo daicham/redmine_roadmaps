@@ -190,10 +190,10 @@ class RoadmapsLogic
   private
   def self.get_plan_hours(version_id)
     plan_hours = 0.0
-    @@field_plan_hours ||= CustomField.find_by_name("当初工数")
+    field_plan_hours = CustomField.find_by_name("当初工数")
     issues = Issue.find_all_by_fixed_version_id(version_id)
     issues.each do |i|
-      plan_hours +=  i.custom_value_for(@@field_plan_hours).value.to_f if i.leaf? && i.custom_value_for(@@field_plan_hours)
+      plan_hours +=  i.custom_value_for(field_plan_hours).value.to_f if i.leaf? && i.custom_value_for(field_plan_hours)
     end
     plan_hours
   end
